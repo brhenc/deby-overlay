@@ -1,0 +1,14 @@
+--- a/schemas/org.cinnamon.desktop.keybindings.media-keys.gschema.xml.in.in	2017-01-14 08:56:31.527846241 +0000
++++ b/schemas/org.cinnamon.desktop.keybindings.media-keys.gschema.xml.in.in	2017-01-14 08:58:52.887840733 +0000
+@@ -226,11 +226,6 @@
+       <_summary>Rotate display</_summary>
+       <_description>Rotate display</_description>
+     </key>
+-    <key name="video-rotation-lock" type="as">
+-      <default>['&lt;Super&gt;o']</default>
+-      <_summary>Orientation Lock</_summary>
+-      <_description>Orientation Lock</_description>
+-    </key>
+     <key name="suspend" type="as">
+       <default>['XF86Sleep']</default>
+       <_summary>Suspend the system</_summary>
