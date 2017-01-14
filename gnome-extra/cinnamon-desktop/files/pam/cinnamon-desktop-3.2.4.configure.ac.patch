@@ -1,0 +1,10 @@
+--- a/configure.ac	2017-01-14 09:48:02.887981483 +0000
++++ b/configure.ac	2017-01-14 09:50:44.911980287 +0000
+@@ -153,6 +153,7 @@
+ schemas/Makefile
+ po/Makefile.in
+ files/Makefile
++data/Makefile
+ ])
+ 
+ AC_OUTPUT

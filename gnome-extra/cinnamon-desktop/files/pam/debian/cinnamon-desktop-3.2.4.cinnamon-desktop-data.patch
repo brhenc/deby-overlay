@@ -1,0 +1,8 @@
+--- a/debian/cinnamon-desktop-data.install	2017-01-14 09:54:22.471978682 +0000
++++ b/debian/cinnamon-desktop-data.install	2017-01-14 09:55:14.691978297 +0000
+@@ -2,4 +2,5 @@
+ 
+ usr/share/glib-2.0/schemas
+ usr/share/locale
++debian/cinnamon-desktop.pam => /etc/pam.d/cinnamon-desktop
+ usr/bin/cinnamon-desktop-migrate-mediakeys /usr/share/cinnamon/
