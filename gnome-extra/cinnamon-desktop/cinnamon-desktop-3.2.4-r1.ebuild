@@ -9,12 +9,12 @@ inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
 HOMEPAGE="http://cinnamon.linuxmint.com/"
-SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${P}-3.2.4.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
 KEYWORDS="~amd64 ~x86"
-IUSE="+introspection systemd pam media-keys-legacy"
+IUSE="+introspection"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.37.3:2[dbus]
@@ -41,37 +41,12 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 	virtual/pkgconfig
 "
-
-MKLEGACY_PATCHES=("${FILESDIR}/media-keys-legacy/${PN}-3.2.4.media-keys-gschema-legacy.patch" 
-         "${FILESDIR}/media-keys-legacy/${PN}-3.2.4.cdesktop-enums-legacy.patch" ) #FL-3475
-
-PAM_PATCHES=("${FILESDIR}/pam/${PN}-3.2.4.Makefile.am.patch"
-             "${FILESDIR}/pam/${PN}-3.2.4.configure.ac.patch"
-             "${FILESDIR}/pam/debian/${PN}-3.2.4.cinnamon-desktop-data.patch" ) #FL-3475
-
 pkg_setup() {
 	python_setup
 }
 
 src_prepare() {
-	if use media-keys-legacy; then
-		if declare -p MKLEGACY_PATCHES | grep -q "^declare -a "; then
-			[[ -n ${MKLEGACY_PATCHES[@]} ]] && eapply "${MKLEGACY_PATCHES[@]}"
-		else
-			[[ -n ${MKLEGACY_PATCHES} ]] && eapply ${MKLEGACY_PATCHES}
-		fi
-	fi
-	if use pam; then
-		if declare -p PAM_PATCHES | grep -q "^declare -a "; then
-			[[ -n ${PAM_PATCHES[@]} ]] && eapply "${PAM_PATCHES[@]}"
-		else
-			[[ -n ${PAM_PATCHES} ]] && eapply ${PAM_PATCHES}
-		fi
-		cp ${FILESDIR}/pam/debian/cinnamon-desktop.pam ${WORKDIR}/${P}/debian
-		mkdir ${WORKDIR}/${P}/data
-		cp ${FILESDIR}/pam/data/Makefile.am ${WORKDIR}/${P}/data
-		cp ${FILESDIR}/pam/data/cinnamon-desktop ${WORKDIR}/${P}/data
-	fi
+	cp ${FILESDIR}/pam/cinnamon-desktop.pam /etc/pam.d/cinnamon-desktop #FL-3475
 	eapply_user
 	eautoreconf
 	gnome2_src_prepare
@@ -85,10 +60,4 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
-
-	# set sane default gschema values for systemd users
-	if use systemd; then
-		insinto /usr/share/glib-2.0/schemas/
-		newins "${FILESDIR}"/${PN}-2.6.4.systemd.gschema.override ${PN}.systemd.gschema.override
-	fi
 }
