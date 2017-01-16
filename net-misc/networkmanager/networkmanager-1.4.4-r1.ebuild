@@ -65,6 +65,9 @@ COMMON_DEPEND="
 	resolvconf? ( net-dns/openresolv )
 	selinux? ( sys-libs/libselinux )
 	systemd? ( >=sys-apps/systemd-209:0= )
+	!systemd? (
+		!consolekit? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
+	)
 	teamd? ( >=net-misc/libteam-1.9 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -189,7 +192,7 @@ multilib_src_configure() {
 			$(multilib_native_enable concheck) \
 			--with-crypto=$(usex nss nss gnutls) \
 			--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit no)) \
-			--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit no)) \
+			--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit upower)) \
 			$(multilib_native_use_with audit libaudit) \
 			$(multilib_native_use_enable bluetooth bluez5-dun) \
 			$(multilib_native_use_enable introspection) \
