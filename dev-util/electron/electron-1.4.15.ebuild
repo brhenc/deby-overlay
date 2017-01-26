@@ -42,7 +42,7 @@ SRC_URI="
 	https://github.com/electron/node/archive/${NODE_COMMIT}.tar.gz -> electron-${NODE_P}.tar.gz
 	https://github.com/zcbenz/native-mate/archive/${NATIVE_MATE_COMMIT}.tar.gz -> ${NATIVE_MATE_P}.tar.gz
 	https://github.com/electron/libchromiumcontent/archive/${LIBCHROMIUMCONTENT_COMMIT}.tar.gz -> ${LIBCHROMIUMCONTENT_P}.tar.gz
-	https://github.com/electron/asar/archive/v${ASAR_VERSION}-gentoo/asar-build.tar.gz -> ${ASAR_P}.tar.gz
+	https://github.com/electron/asar/archive/v${ASAR_VERSION}.tar.gz -> ${ASAR_P}.tar.gz
 "
 
 S="${WORKDIR}/${CHROMIUM_P}"
