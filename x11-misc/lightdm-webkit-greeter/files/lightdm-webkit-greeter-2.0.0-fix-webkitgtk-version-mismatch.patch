@@ -1,0 +1,78 @@
+--- a/configure	2017-01-30 17:21:00.003575847 +0100
++++ b/configure	2017-01-30 17:27:34.179560486 +0100
+@@ -3949,13 +3949,13 @@
+     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ \""; } >&5
+   ($PKG_CONFIG --exists --print-errors "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ ") 2>&5
+   ac_status=$?
+@@ -3964,7 +3964,7 @@
+   pkg_cv_GREETER_CFLAGS=`$PKG_CONFIG --cflags "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ " 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+@@ -3981,13 +3981,13 @@
+     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ \""; } >&5
+   ($PKG_CONFIG --exists --print-errors "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ ") 2>&5
+   ac_status=$?
+@@ -3996,7 +3996,7 @@
+   pkg_cv_GREETER_LIBS=`$PKG_CONFIG --libs "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ " 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+@@ -4022,14 +4022,14 @@
+ 	        GREETER_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ " 2>&1`
+         else
+ 	        GREETER_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ " 2>&1`
+         fi
+@@ -4039,7 +4039,7 @@
+ 	as_fn_error $? "Package requirements (
+     liblightdm-gobject-1
+     gtk+-3.0
+-    webkitgtk-3.0
++    webkitgtk-4.0
+     dbus-glib-1
+ ) were not met:
+ 
