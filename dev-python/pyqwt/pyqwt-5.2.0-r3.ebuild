@@ -30,18 +30,20 @@ S=${WORKDIR}/${MY_P}/configure
 
 src_prepare() {
 	sed -i -e "s|configuration.qt_dir, 'bin'|'$(qt4_get_bindir)'|" configure.py || die
-	#patching for compatiblity with sip-4.19, ported from huge 1100 line Fedora patch
+	cd "${S}"
+	cd ..
 	EPATCH_SOURCE="${FILESDIR}/sip-4.19-compat" EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" epatch
-	python_copy_sources 
+	python_copy_sources
 	append-flags -fPIC
 }
 
 src_configure() {
+	echo "buildir: ${BUILD_DIR}"
 	configuration() {
 		local myconf=()
 		use debug && myconf+=( --debug )
-
+		echo "buildir: ${BUILD_DIR}"
 		cd "${BUILD_DIR}" || die
 		# '-j' option can be buggy.
 		"${PYTHON}" configure.py \
